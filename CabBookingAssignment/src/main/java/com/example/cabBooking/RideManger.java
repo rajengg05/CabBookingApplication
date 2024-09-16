@@ -2,6 +2,7 @@ package main.java.com.example.cabBooking;
 
 import main.java.com.example.cabBooking.Controller.DriverController;
 import main.java.com.example.cabBooking.Exceptions.NoAvailableDriversException;
+import main.java.com.example.cabBooking.Exceptions.RideNotFoundException;
 import main.java.com.example.cabBooking.Models.Driver;
 import main.java.com.example.cabBooking.Models.Location;
 
@@ -25,7 +26,7 @@ public class RideManger {
         }
 
         if (availableDrivers.isEmpty()) {
-            throw new NoAvailableDriversException("No available drivers found for the route.");
+            throw new RideNotFoundException("No Ride found for the route.");
         } else {
             System.out.println("Available drivers:");
             for (Driver driver : availableDrivers) {
@@ -44,7 +45,7 @@ public class RideManger {
                 return;
             }
         }
-        System.out.println("Driver not available");
+        throw new NoAvailableDriversException("No available drivers found for the route");
     }
 
 }
